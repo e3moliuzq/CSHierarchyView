@@ -1,0 +1,6 @@
+# CSHierarchyView
+一个多层级的选项菜单附带一个已选择层级文字导航条，点击导航条中文字可返回该级菜单
+
+分为有页面叠加效果和无效果两种，分别为CSHierarchyView和CSHierarchyOneTableView，调用方法完全相同，只是展示效果不同。
+
+详细内容见CSHierarchyView.h和CSHierarchyOneTableView.h中的注释和演示代码，导航条详细内容见CSNameNaviView.h中的注释
