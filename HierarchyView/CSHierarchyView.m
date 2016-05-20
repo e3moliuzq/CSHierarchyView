@@ -73,6 +73,10 @@
     return picker_choose_indexs;
 }
 
+- (NSArray*)getInfoArray {
+    return picker_array;
+}
+
 - (void)createTableView:(int)index {
     UITableView *table_view;
     if (index == 0) {

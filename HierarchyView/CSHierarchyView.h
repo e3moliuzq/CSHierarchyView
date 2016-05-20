@@ -49,5 +49,6 @@
 - (id)initWithFrame:(CGRect)frame array:(NSArray*)info_array bgColor:(UIColor*)bgColor highlightedColor:(UIColor*)highlightedColor labelColor:(UIColor*)labelColor lineColor:(UIColor*)lineColor textSize:(float)textSize;
 
 - (NSArray*)getNowChooseIndexs;
+- (NSArray*)getInfoArray;
 
 @end
