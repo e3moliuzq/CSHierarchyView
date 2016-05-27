@@ -28,6 +28,9 @@
     
     UITableView *table_view;
     
+    NSString *array_key;
+    NSString *name_key;
+    
 }
 @property (nonatomic,weak) id<CSHierarchyOneTableViewDelegate> delegate;
 @property (nonatomic,strong) CSNameNaviView* name_navi_view;
@@ -45,8 +48,8 @@
  lineColor：列表背景颜色，可为空，为空为[UIColor lightGrayColor]
  textSize：文字大小，小于等于0时是默认大小16
  */
-- (id)initWithFrame:(CGRect)frame array:(NSArray*)info_array;
-- (id)initWithFrame:(CGRect)frame array:(NSArray*)info_array bgColor:(UIColor*)bgColor highlightedColor:(UIColor*)highlightedColor labelColor:(UIColor*)labelColor lineColor:(UIColor*)lineColor textSize:(float)textSize;
+- (id)initWithFrame:(CGRect)frame array:(NSArray*)info_array nameKey:(NSString*)name arrayKey:(NSString*)array;
+- (id)initWithFrame:(CGRect)frame array:(NSArray*)info_array bgColor:(UIColor*)bgColor highlightedColor:(UIColor*)highlightedColor labelColor:(UIColor*)labelColor lineColor:(UIColor*)lineColor textSize:(float)textSize nameKey:(NSString*)name arrayKey:(NSString*)array;
 
 - (NSArray*)getNowChooseIndexs;
 - (NSArray*)getInfoArray;

@@ -171,8 +171,7 @@
                           ];
     
     CGSize winsize = [[UIScreen mainScreen] bounds].size;
-//    CSHierarchyView *view = [[CSHierarchyView alloc] initWithFrame:CGRectMake(0, 20, winsize.width, winsize.height-20) array:test_arr bgColor:nil highlightedColor:nil labelColor:nil lineColor:nil textSize:0];
-    CSHierarchyOneTableView *view = [[CSHierarchyOneTableView alloc] initWithFrame:CGRectMake(0, 20, winsize.width, winsize.height-20) array:test_arr bgColor:nil highlightedColor:nil labelColor:nil lineColor:nil textSize:0];
+    CSHierarchyOneTableView *view = [[CSHierarchyOneTableView alloc] initWithFrame:CGRectMake(0, 20, winsize.width, winsize.height-20) array:test_arr bgColor:nil highlightedColor:nil labelColor:nil lineColor:nil textSize:0 nameKey:@"name" arrayKey:@"array"];
     [view setBackgroundColor:[UIColor clearColor]];
     view.delegate = self;
     [self.view addSubview:view];

@@ -10,11 +10,11 @@
 
 @implementation CSHierarchyView
 
-- (id)initWithFrame:(CGRect)frame array:(NSArray *)info_array {
-    return [self initWithFrame:frame array:info_array bgColor:nil highlightedColor:nil labelColor:nil lineColor:nil textSize:0];
+- (id)initWithFrame:(CGRect)frame array:(NSArray *)info_array nameKey:(NSString *)name arrayKey:(NSString *)array {
+    return [self initWithFrame:frame array:info_array bgColor:nil highlightedColor:nil labelColor:nil lineColor:nil textSize:0 nameKey:name arrayKey:array];
 }
 
-- (id)initWithFrame:(CGRect)frame array:(NSArray *)info_array bgColor:(UIColor *)bgColor highlightedColor:(UIColor *)highlightedColor labelColor:(UIColor *)labelColor lineColor:(UIColor *)lineColor textSize:(float)textSize {
+- (id)initWithFrame:(CGRect)frame array:(NSArray *)info_array bgColor:(UIColor *)bgColor highlightedColor:(UIColor *)highlightedColor labelColor:(UIColor *)labelColor lineColor:(UIColor *)lineColor textSize:(float)textSize nameKey:(NSString *)name arrayKey:(NSString *)array {
     if ([super initWithFrame:frame]) {
         self.clipsToBounds = YES;
         
@@ -55,6 +55,8 @@
         
         table_views_array = [[NSMutableArray alloc] init];
         
+        array_key = array;
+        name_key = name;
         
         _name_navi_view = [[CSNameNaviView alloc] initWithFrame:CGRectMake(0, self.frame.size.height-44, self.frame.size.width, 44)];
         [_name_navi_view setBackgroundColor:bg_color];
@@ -123,7 +125,7 @@
         for (int i=0; i<tableView.tag; i++) {
             int index = [[picker_choose_indexs objectAtIndex:i] intValue];
             NSDictionary *dict = [array objectAtIndex:index];
-            array = [NSArray arrayWithArray:[dict objectForKey:@"array"]];
+            array = [NSArray arrayWithArray:[dict objectForKey:array_key]];
         }
         return array.count;
     }
@@ -160,13 +162,13 @@
             for (int i=0; i<tableView.tag; i++) {
                 int index = [[picker_choose_indexs objectAtIndex:i] intValue];
                 NSDictionary *dict = [array objectAtIndex:index];
-                array = [NSArray arrayWithArray:[dict objectForKey:@"array"]];
+                array = [NSArray arrayWithArray:[dict objectForKey:array_key]];
             }
             dict = [array objectAtIndex:index];
         }
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 15, tableView.frame.size.width-30, 20)];
-        [label setText:[dict objectForKey:@"name"]];
+        [label setText:[dict objectForKey:name_key]];
         [label setTextColor:cell_label_color];
         [label setTextAlignment:NSTextAlignmentLeft];
         [label setFont:[UIFont systemFontOfSize:cell_text_size]];
@@ -198,16 +200,16 @@
         for (int i=0; i<tableView.tag; i++) {
             int index = [[picker_choose_indexs objectAtIndex:i] intValue];
             NSDictionary *dict = [array objectAtIndex:index];
-            array = [NSArray arrayWithArray:[dict objectForKey:@"array"]];
+            array = [NSArray arrayWithArray:[dict objectForKey:array_key]];
         }
         dict = [array objectAtIndex:index];
     }
-    NSArray *arr = [dict objectForKey:@"array"];
+    NSArray *arr = [dict objectForKey:array_key];
     if (arr && arr.count > 0) {
         [picker_choose_indexs addObject:[NSString stringWithFormat:@"%d",index]];
         
         _name_navi_view.hidden = NO;
-        NSString *name = [dict objectForKey:@"name"];
+        NSString *name = [dict objectForKey:name_key];
         [_name_navi_view addNewName:name];
         
         [self createTableView:(int)picker_choose_indexs.count];
